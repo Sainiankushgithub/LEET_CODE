@@ -546,10 +546,17 @@ public:
     }
 };
 EFFICIENT APPROACH :
-
-
-
-
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+       n=((n&0xffff0000)>>16)|((n&0x0000ffff)<<16);
+       n=((n&0xff00ff00)>>8)|((n&0x00ff00ff)<<8);
+       n=((n&0xf0f0f0f0)>>4)|((n&0x0f0f0f0f)<<4);
+       n=((n&0xcccccccc)>>2)|((n&0x33333333)<<2);
+       n=((n&0xaaaaaaaa)>>1)|((n&0x55555555)<<1);
+       return n;
+    }
+};
 
 
 
@@ -900,5 +907,59 @@ public:
         return n<=0;
     }
 };
+
+•	DAY 24 :Array
+1.	3sum :
+
+
+
+
+
+
+
+
+
+
+
+3.Non Decreasing array :
+Given an array nums with n integers, your task is to check if it could become non-decreasing by modifying at most one element.
+We define an array is non-decreasing if nums[i] <= nums[i + 1] holds for every i (0-based) such that (0 <= i <= n - 2).
+ 
+Example 1:
+Input: nums = [4,2,3]
+Output: true
+Explanation: You could modify the first 4 to 1 to get a non-decreasing array.
+Example 2:
+Input: nums = [4,2,1]
+Output: false
+Explanation: You cannot get a non-decreasing array by modifying at most one element.
+class Solution {
+public:
+    bool checkPossibility(vector<int>& nums) {
+        int atmost=0;
+        for(int i=1;i<nums.size();i++)
+        {
+            if(nums[i]<nums[i-1])
+            {
+                if(atmost==1)
+                {
+                    return false;
+                }
+                if(i==1 || nums[i]>=nums[i-2])
+                {
+                    nums[i-1]=nums[i];
+                }
+                else
+                {
+                    nums[i]=nums[i-1];
+                }
+                atmost++;
+            }
+        }
+        return atmost<=1;
+    }
+};
+4. Product of Array Except Self :
+
 
 
