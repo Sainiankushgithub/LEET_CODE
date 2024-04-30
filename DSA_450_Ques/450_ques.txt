@@ -1285,6 +1285,65 @@ public:
 
 
 
+3.Remove Duplicates from sorted list II :
+Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.
+ 
+Example 1:
+ 
+Input: head = [1,2,3,3,4,4,5]
+Output: [1,2,5]
+Example 2:
+ 
+Input: head = [1,1,1,2,3]
+Output: [2,3]
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head==NULL || head->next==NULL)
+        {
+            return head;
+        }
+        ListNode*dummy=new ListNode(0);
+        dummy->next=head;
+        ListNode*curr=head;
+        ListNode*prev=dummy;
+        while(curr!=NULL && curr->next!=NULL)
+        {
+            if(curr->val==curr->next->val)
+            {
+                int duplicate = curr->val;
+                while(curr!=NULL && curr->val==duplicate)
+                {
+                    ListNode*temp=curr;
+                    curr=curr->next;
+                    delete temp;
+                }
+                prev->next=curr;
+            }
+            else
+            {
+                prev=curr;
+                curr=curr->next;
+            }
+        }
+        return dummy->next;
+    }
+};
+
+
+
 
 
 
