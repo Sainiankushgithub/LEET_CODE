@@ -1192,3 +1192,135 @@ public:
 };
 
 3.Rotate List :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+•	DAY 31 : LIST
+ 1.Remove Nth node from the list 
+Given the head of a linked list, remove the nth node from the end of the list and return its head.
+ 
+Example 1:
+ 
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+Example 2:
+Input: head = [1], n = 1
+Output: []
+Example 3:
+Input: head = [1,2], n = 1
+Output: [1]
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if(head->next==NULL && n==1 || head==NULL)
+        {
+            return nullptr;
+        }
+        int count=length(head);
+        if(count-n==0)
+        {
+            return head->next;
+        }
+        ListNode*fast=head;
+        for(int i=1;i<count-n;i++)
+        {
+            fast=fast->next;
+        }
+        ListNode*temp=fast->next;
+        if(temp!=NULL)
+        {
+            fast->next=temp->next;
+            delete temp;
+        }
+        else
+        {
+            fast->next=NULL;
+        }
+        return head;
+    }
+    int length(ListNode*fast)
+    {
+        int count=0;
+        while(fast->next!=NULL && fast->next->next!=NULL)
+        {
+            fast=fast->next->next;
+            count+=2;
+        }
+        if(fast->next==NULL)
+        {
+            count+=1;
+        }
+        else
+        {
+            count+=2;
+        }
+        return count;
+    }
+};
+
+2.Delete Node in a Linked List:
+
+
+
+
+
+
+
+
+
+
+
+
+
+•	DAY 35 : Stack 
+ 1.Reverse polish Notation :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.Min stack :
+
+
