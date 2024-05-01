@@ -1,10 +1,10 @@
 ANKUSH SAINI
 DSA 150 DAYS CHALLENGE 450 QUESTIONS
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 •	DAY 16 :MATHS
 1.SQRT(X)
 class Solution {
@@ -35,8 +35,8 @@ public:
         return result;
     }
 };
-
-
+ 
+ 
 2.PLUS ONE
 NAÏVE SOLUTION:
 Example 1:
@@ -57,8 +57,8 @@ Output: [1,0]
 Explanation: The array represents the integer 9.
 Incrementing by one gives 9 + 1 = 10.
 Thus, the result should be [1,0].
-
-
+ 
+ 
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
@@ -97,13 +97,13 @@ public:
        return digits;
     }
 };
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 3.ROMAN TO INTEGER
 class Solution {
 public:
@@ -145,7 +145,7 @@ public:
         return 1000;
     }
 };
-
+ 
 4.HAPPY NUMBER
 Happy number doesn’t contain 4 while non happy number always contain 4 after some iteration
 Example 1:
@@ -178,8 +178,8 @@ public:
        return false;
     }
 };
-
-
+ 
+ 
 •	DAY 17:ARRAYS
 1.Count Odd Number in an range Interval
 Example 1:
@@ -223,7 +223,7 @@ public:
         return (rec2[1]>=rec1[3]||rec1[1]>=rec2[3]||rec2[0]>=rec1[2]||rec1[0]>=rec2[2])?false:true;
     }
 };
-
+ 
 3.Add Digits
 Example 1:
 Input: num = 38
@@ -249,8 +249,8 @@ public:
         return sum;
     }
 };
-
-
+ 
+ 
 4.Maximum Product of three numbers
 class Solution {
 public:
@@ -262,7 +262,7 @@ public:
         return max(max_product, alternate_max_product);
     }
 };
-
+ 
 5.Excel Sheet Column Number
 Example 1:
 Input: columnTitle = "A"
@@ -273,7 +273,7 @@ Output: 28
 Example 3:
 Input: columnTitle = "ZY"
 Output: 701
-
+ 
 class Solution {
 public:
     int titleToNumber(string s) {
@@ -285,7 +285,7 @@ public:
         }return res;
     }
 };
-
+ 
 •	DAY 18 : BITS 
 1.Add Binary
 Example 1:
@@ -315,7 +315,7 @@ public:
        return sum;
     }
 };
-
+ 
 2.Counting Bits
 Input: n = 2
 Output: [0,1,1]
@@ -333,7 +333,7 @@ Explanation:
 3 --> 11
 4 --> 100
 5 --> 101
-
+ 
 NAÏVE APPROACH :
 class Solution {
 public:
@@ -442,26 +442,26 @@ public:
         return sum;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 6.Number of 1 bits
 Example 1:
 Input: n = 00000000000000000000000000001011
@@ -481,7 +481,7 @@ public:
         return res;
     }
 };
-
+ 
 Method 2: Bitwise Right Shift >>
 class Solution {
 public:
@@ -495,7 +495,7 @@ public:
         return res;
     }
 };
-
+ 
 7.Hamming Distance
 Example 1:
 Input: x = 1, y = 4
@@ -505,7 +505,7 @@ Explanation:
 4   (0 1 0 0)
        ↑   ↑
 The above arrows point to positions where the corresponding bits are different.
-
+ 
 class Solution {
 public:
     int hammingDistance(int x, int y) {
@@ -519,7 +519,7 @@ public:
         return res;
     }
 };
-
+ 
 8.Reverse Bits
 Example 1:
 Input: n = 00000010100101000001111010011100
@@ -557,20 +557,20 @@ public:
        return n;
     }
 };
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 •	DAY 19 : BS
 1.Binary Search :
-
-
-
+ 
+ 
+ 
 4.Valid Perfect Square :
 Example 1:
 Input: num = 16
@@ -580,7 +580,7 @@ Example 2:
 Input: num = 14
 Output: false
 Explanation: We return false because 3.742 * 3.742 = 14 and 3.742 is not an integer.
-
+ 
 class Solution {
 public:
     bool isPerfectSquare(int num) {
@@ -597,7 +597,7 @@ public:
         return false;
     }
 };
-
+ 
 5.Kth Missing Positive Number :
 Example 1:
 Input: arr = [2,3,4,7,11], k = 5
@@ -629,7 +629,7 @@ public:
         return arr[arr.size()-1]+k;
     }
 };
-
+ 
 •	DAY 20 :Hashing
 2.Ransom Note:
 Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
@@ -745,7 +745,7 @@ Output: false
 Example 3:
 Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
 Output: true
-
+ 
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
@@ -769,22 +769,22 @@ public:
         return true;
     }
 };
-
+ 
 •	DAY 21 :String
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 •	DAY 23 :Array
 1.Fibbonacci Series :
 The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
@@ -832,11 +832,11 @@ public:
         return second;
     }
 };
-
+ 
  2.Min Cost Climbing Stairs : 
-
-
-
+ 
+ 
+ 
 3.Climbing Stairs :
 You are climbing a staircase. It takes n steps to reach the top.
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
@@ -871,16 +871,16 @@ public:
         return v[n];
     }
 };
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 5.Can Place Flower 
 You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
 Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
@@ -891,7 +891,7 @@ Output: true
 Example 2:
 Input: flowerbed = [1,0,0,0,1], n = 2
 Output: false
-
+ 
 class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n){
@@ -907,20 +907,20 @@ public:
         return n<=0;
     }
 };
-
+ 
 •	DAY 24 :Array
 1.	3sum :
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 3.Non Decreasing array :
 Given an array nums with n integers, your task is to check if it could become non-decreasing by modifying at most one element.
 We define an array is non-decreasing if nums[i] <= nums[i + 1] holds for every i (0-based) such that (0 <= i <= n - 2).
@@ -970,7 +970,7 @@ Output: [24,12,8,6]
 Example 2:
 Input: nums = [-1,1,0,-3,3]
 Output: [0,0,9,0,0]
-
+ 
 NAIVE APPROACH :
 class Solution {
 public:
@@ -995,18 +995,18 @@ public:
     }
 };
 EFFICIENT  APPROACH :
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 •	DAY 25: Array
       1.Merge Intervals :
 Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
@@ -1019,7 +1019,7 @@ Example 2:
 Input: intervals = [[1,4],[4,5]]
 Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
-
+ 
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
@@ -1060,7 +1060,7 @@ Example 3:
 Input: head = []
 Output: []
 EFFICIENT  APPROACH :( Method -1)    Time : O(n logn) Space : O(logn)
-
+ 
 class Solution {
 public:
     ListNode* sortList(ListNode* head){
@@ -1072,7 +1072,7 @@ public:
         divideList(head,a,b);
         a=sortList(a);
         b=sortList(b);
-
+ 
         return merge(a,b);
     }
     ListNode*merge(ListNode*l1, ListNode*l2)
@@ -1112,19 +1112,19 @@ public:
         slow->next=NULL;
     }
 };
-
+ 
 EFFICIENT  APPROACH : Time: O(N log N) 
 Space : O(1) 
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 2.Reorder List :
 You are given the head of a singly linked-list. The list can be represented as:
 L0 → L1 → … → Ln - 1 → Ln
@@ -1152,7 +1152,7 @@ public:
         slow->next=NULL;
         merge(head,reversed);
     }
-
+ 
     public:
     ListNode*middle(ListNode*head)
     {
@@ -1190,33 +1190,33 @@ public:
         }
     }
 };
-
+ 
 3.Rotate List :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 •	DAY 31 : LIST
  1.Remove Nth node from the list 
 Given the head of a linked list, remove the nth node from the end of the list and return its head.
@@ -1231,7 +1231,7 @@ Output: []
 Example 3:
 Input: head = [1,2], n = 1
 Output: [1]
-
+ 
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
@@ -1280,11 +1280,11 @@ public:
         return count;
     }
 };
-
+ 
 2.Delete Node in a Linked List:
-
-
-
+ 
+ 
+ 
 3.Remove Duplicates from sorted list II :
 Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.	
  
@@ -1296,8 +1296,8 @@ Example 2:
  
 Input: head = [1,1,1,2,3]
 Output: [2,3]
-
-
+ 
+ 
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -1341,7 +1341,7 @@ public:
         return dummy->next;
     }
 };
-
+ 
 4. Next Greater Node in linked list : 
 You are given the head of a linked list with n nodes.
 For each node in the list, find the value of the next greater node. That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it.
@@ -1355,7 +1355,7 @@ Example 2:
  
 Input: head = [2,7,4,3,5]
 Output: [7,0,5,5,0]
-
+ 
 NAIVE  APPROACH :
 class Solution {
 public:
@@ -1384,45 +1384,45 @@ public:
     }
 };
 EFFICIENT  APPROACH :
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 •	DAY 35 : Stack 
  1.Reverse polish Notation :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 2.Min stack :
-
+ 
 •	DAY 36 : Stack 
 1.	Next Greater Element :
 Given a circular integer array nums (i.e., the next element of nums[nums.length - 1] is nums[0]), return the next greater number for every element in nums.
@@ -1465,5 +1465,6 @@ public:
         return result;
     }
 };
-
+ 
 (Method : 2) (more efficient)
+
