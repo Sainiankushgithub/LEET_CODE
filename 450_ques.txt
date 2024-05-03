@@ -1386,15 +1386,222 @@ public:
 EFFICIENT  APPROACH :
  
  
+
+
+
+
+
+
+
+
+
+
+•	DAY 32 : LIST
+1.Add Two Number :
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
  
+Example 1:
  
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+Example 2:
+Input: l1 = [0], l2 = [0]
+Output: [0]
+Example 3:
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1
+ class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode*newNode=NULL,*head=NULL;
+        int carry=0;
+        while(l1!=NULL || l2!=NULL || carry!=0)
+        {
+           int sum=(l1?l1->val:0)+(l2?l2->val:0)+carry;
+           if(sum<10)
+           {
+               if(newNode==NULL)
+               {
+                   newNode=new ListNode(sum);
+                   head=newNode;
+               }
+               else
+               {
+                   newNode->next=new ListNode(sum);
+                   newNode=newNode->next;
+               }
+               carry=0;
+           }
+           else
+           {
+               int remainder=sum%10;
+               carry=sum/10;
+               if(newNode==NULL)
+               {
+                   newNode=new ListNode(remainder);
+                   head=newNode;
+               }
+               else
+               {
+                   newNode->next=new ListNode(remainder);
+                   newNode=newNode->next;
+               }
+           }
+           if(l1)
+           l1=l1->next;
+           if(l2)
+           l2=l2->next;
+        }
+        return head;
+    }
+};
+
+
+2.Add Two Number II  :
+You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
  
+Example 1:
  
+Input: l1 = [7,2,4,3], l2 = [5,6,4]
+Output: [7,8,0,7]
+Example 2:
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [8,0,7]
+Example 3:
+Input: l1 = [0], l2 = [0]
+Output: [0]
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+       l1=reverse(l1);
+       l2=reverse(l2);
+        int carry=0;
+        ListNode*newNode=NULL;
+        ListNode*head=NULL;
+        while(l1!=NULL || l2!=NULL || carry!=0)
+        {
+            int sum=(l1?l1->val:0)+(l2?l2->val:0)+carry;
+            if(sum<10)
+            {
+                if(newNode==NULL)
+                {
+                    newNode=new ListNode(sum);
+                    head=newNode;
+                }
+                else
+                {
+                    newNode->next=new ListNode(sum);
+                    newNode=newNode->next;
+                }
+                carry=0;
+            }
+            else
+            {
+                int remainder=sum%10;
+                carry=sum/10;
+                if(newNode==NULL)
+                {
+                    newNode=new ListNode(remainder);
+                    head=newNode;
+                }
+                else
+                {
+                    newNode->next=new ListNode(remainder);
+                    newNode=newNode->next;
+                }
+            }
+            if(l1)
+            l1=l1->next;
+            if(l2)
+            l2=l2->next;
+        }
+        head=reverse(head);
+        return head;
+    }
+    ListNode*reverse(ListNode*head)
+    {
+        ListNode*prev=NULL;
+        while(head!=NULL)
+        {
+            ListNode*nextNode=head->next;
+            head->next=prev;
+            prev=head;
+            head=nextNode;
+        }
+        return prev;
+    }
+};
+3.Copy List With Random Pointer :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.Reverse Linked List II : 
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
  
+Example 1:
  
- 
- 
- 
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+Example 2:
+Input: head = [5], left = 1, right = 1
+Output: [5]
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if(head==NULL || head->next==NULL)
+        {
+            return head;
+        }
+        ListNode*dummy=new ListNode(0);
+          dummy->next=head;
+          ListNode*curr=head;
+          ListNode*prev=dummy;
+          for(int i=1;i<left;i++)
+          {
+             prev=curr;
+             curr=curr->next;
+          }
+          ListNode*point=curr;
+          ListNode*reverse=NULL;
+          for(int i=left;i<=right;i++)
+          {
+             ListNode*nextNode=curr->next;
+             curr->next=reverse;
+             reverse=curr;
+             curr=nextNode;
+          }
+          point->next=curr;
+          prev->next=reverse;
+          return dummy->next;
+    }
+};
+
 •	DAY 35 : Stack 
  1.Reverse polish Notation :
  
