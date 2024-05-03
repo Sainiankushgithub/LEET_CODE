@@ -1120,12 +1120,7 @@ Space : O(1)
  
  
  
- 
- 
- 
- 
- 
-2.Reorder List :
+ 2.Reorder List :
 You are given the head of a singly linked-list. The list can be represented as:
 L0 → L1 → … → Ln - 1 → Ln
 Reorder the list to be on the following form:
@@ -1192,31 +1187,59 @@ public:
 };
  
 3.Rotate List :
+Given the head of a linked list, rotate the list to the right by k places.
  
+Example 1:
  
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+Example 2:
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+Input: head = [0,1,2], k = 4
+Output: [2,0,1]
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k){
+        if(head==NULL || head->next==NULL ||k==0)
+        {
+            return head;
+        }
+        ListNode*curr=head;
+        int count=1;
+        while(curr->next!=NULL)
+        {
+            count++;
+            curr=curr->next;
+        }
+        k=k%count;
+        if(k==0)
+        {
+            return head;
+        }
+        curr->next=head;
+        int moves=count-k;
+        ListNode*newHead;
+        curr=head;
+        for(int i=1;i<moves;i++)
+        {
+            curr=curr->next;
+        }
+        newHead=curr->next;
+        curr->next=NULL;
+        return newHead;
+    }
+};
 •	DAY 31 : LIST
  1.Remove Nth node from the list 
 Given the head of a linked list, remove the nth node from the end of the list and return its head.
