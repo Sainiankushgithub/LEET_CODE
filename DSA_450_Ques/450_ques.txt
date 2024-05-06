@@ -1305,9 +1305,50 @@ public:
 };
  
 2.Delete Node in a Linked List:
+There is a singly-linked list head and we want to delete a node node in it.
+You are given the node to be deleted node. You will not be given access to the first node of head.
+All the values of the linked list are unique, and it is guaranteed that the given node node is not the last node in the linked list.
+Delete the given node. Note that by deleting the node, we do not mean removing it from memory. We mean:
+•	The value of the given node should not exist in the linked list.
+•	The number of nodes in the linked list should decrease by one.
+•	All the values before node should be in the same order.
+•	All the values after node should be in the same order.
+Custom testing:
+•	For the input, you should provide the entire linked list head and the node to be given node. node should not be the last node of the list and should be an actual node in the list.
+•	We will build the linked list and pass the node to your function.
+•	The output will be the entire list after calling your function.
  
+Example 1:
  
+Input: head = [4,5,1,9], node = 5
+Output: [4,1,9]
+Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
+Example 2:
  
+Input: head = [4,5,1,9], node = 1
+Output: [4,5,9]
+Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        ListNode*prev;
+        while(node->next!=NULL)
+        {
+            prev=node;
+            node->val=node->next->val;
+            node=node->next;
+        }
+        prev->next=NULL;
+    }
+};
 3.Remove Duplicates from sorted list II :
 Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.	
  
@@ -1558,31 +1599,71 @@ public:
     }
 };
 3.Copy List With Random Pointer :
+Example 1:
+ 
+Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
+Example 2:
+ 
+Input: head = [[1,1],[2,1]]
+Output: [[1,1],[2,1]]
+Example 3:
+ 
+Input: head = [[3,null],[3,0],[3,null]]
+Output: [[3,null],[3,0],[3,null]]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if(head==NULL)
+        return head;
+        Node*curr=head;
+        while(curr!=NULL)
+        {
+            Node*temp=new Node(curr->val);
+            temp->next=curr->next;
+            curr->next=temp;
+            curr=temp->next;
+        }
+        curr=head;
+        while(curr!=NULL)
+        {
+            if(curr->random!=NULL)
+            {
+                curr->next->random=curr->random->next;
+            }
+            curr=curr->next->next;
+        }
+        Node*copyHead=head->next;
+        curr=head;
+        while(curr!=NULL)
+        {
+            Node*temp=curr->next;
+            curr->next=curr->next->next;
+            if(temp->next!=NULL)
+            {
+                temp->next=temp->next->next;
+            }
+            curr=curr->next;
+        }
+        return copyHead;
+    }
+};
 
 4.Reverse Linked List II : 
 Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
@@ -1844,3 +1925,78 @@ public:
  
 (Method : 2) (more efficient)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+•	DAY 38 : Stack 
+1.Asteroids Collision :
+We are given an array asteroids of integers representing asteroids in a row.
+For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.
+Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.
+ 
+Example 1:
+Input: asteroids = [5,10,-5]
+Output: [5,10]
+Explanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.
+Example 2:
+Input: asteroids = [8,-8]
+Output: []
+Explanation: The 8 and -8 collide exploding each other.
+Example 3:
+Input: asteroids = [10,2,-5]
+Output: [10]
+Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids){
+        vector<int>result;
+        for(int i=0;i<asteroids.size();i++)
+        {
+            if(!result.empty() && (result.back()>0 && asteroids[i]<0))
+            {
+                int sum;
+                while(!result.empty() && (result.back()>0 && asteroids[i]<0))
+                {
+                    sum=result.back()+asteroids[i];
+                    if(sum==0)
+                    {
+                        result.pop_back();
+                        break;
+                    }
+                    else if(sum<0)
+                    {
+                        result.pop_back();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if(sum<0)
+                {
+                    result.push_back(asteroids[i]);
+                }
+            }
+            else
+            {
+                result.push_back(asteroids[i]);
+            }
+        }
+        return result;
+    } 
+};
+s
