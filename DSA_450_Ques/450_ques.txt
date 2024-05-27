@@ -1120,7 +1120,12 @@ Space : O(1)
  
  
  
- 2.Reorder List :
+ 
+ 
+ 
+ 
+ 
+2.Reorder List :
 You are given the head of a singly linked-list. The list can be represented as:
 L0 → L1 → … → Ln - 1 → Ln
 Reorder the list to be on the following form:
@@ -1187,59 +1192,31 @@ public:
 };
  
 3.Rotate List :
-Given the head of a linked list, rotate the list to the right by k places.
  
-Example 1:
  
-Input: head = [1,2,3,4,5], k = 2
-Output: [4,5,1,2,3]
-Example 2:
  
-Input: head = [0,1,2], k = 4
-Output: [2,0,1]
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-class Solution {
-public:
-    ListNode* rotateRight(ListNode* head, int k){
-        if(head==NULL || head->next==NULL ||k==0)
-        {
-            return head;
-        }
-        ListNode*curr=head;
-        int count=1;
-        while(curr->next!=NULL)
-        {
-            count++;
-            curr=curr->next;
-        }
-        k=k%count;
-        if(k==0)
-        {
-            return head;
-        }
-        curr->next=head;
-        int moves=count-k;
-        ListNode*newHead;
-        curr=head;
-        for(int i=1;i<moves;i++)
-        {
-            curr=curr->next;
-        }
-        newHead=curr->next;
-        curr->next=NULL;
-        return newHead;
-    }
-};
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 •	DAY 31 : LIST
  1.Remove Nth node from the list 
 Given the head of a linked list, remove the nth node from the end of the list and return its head.
@@ -1305,50 +1282,9 @@ public:
 };
  
 2.Delete Node in a Linked List:
-There is a singly-linked list head and we want to delete a node node in it.
-You are given the node to be deleted node. You will not be given access to the first node of head.
-All the values of the linked list are unique, and it is guaranteed that the given node node is not the last node in the linked list.
-Delete the given node. Note that by deleting the node, we do not mean removing it from memory. We mean:
-•	The value of the given node should not exist in the linked list.
-•	The number of nodes in the linked list should decrease by one.
-•	All the values before node should be in the same order.
-•	All the values after node should be in the same order.
-Custom testing:
-•	For the input, you should provide the entire linked list head and the node to be given node. node should not be the last node of the list and should be an actual node in the list.
-•	We will build the linked list and pass the node to your function.
-•	The output will be the entire list after calling your function.
  
-Example 1:
  
-Input: head = [4,5,1,9], node = 5
-Output: [4,1,9]
-Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
-Example 2:
  
-Input: head = [4,5,1,9], node = 1
-Output: [4,5,9]
-Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-class Solution {
-public:
-    void deleteNode(ListNode* node) {
-        ListNode*prev;
-        while(node->next!=NULL)
-        {
-            prev=node;
-            node->val=node->next->val;
-            node=node->next;
-        }
-        prev->next=NULL;
-    }
-};
 3.Remove Duplicates from sorted list II :
 Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.	
  
@@ -1450,408 +1386,15 @@ public:
 EFFICIENT  APPROACH :
  
  
-
-
-
-
-
-
-
-
-
-
-•	DAY 32 : LIST
-1.Add Two Number :
-You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
-You may assume the two numbers do not contain any leading zero, except the number 0 itself.
  
-Example 1:
  
-Input: l1 = [2,4,3], l2 = [5,6,4]
-Output: [7,0,8]
-Explanation: 342 + 465 = 807.
-Example 2:
-Input: l1 = [0], l2 = [0]
-Output: [0]
-Example 3:
-Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-Output: [8,9,9,9,0,0,0,1
- class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode*newNode=NULL,*head=NULL;
-        int carry=0;
-        while(l1!=NULL || l2!=NULL || carry!=0)
-        {
-           int sum=(l1?l1->val:0)+(l2?l2->val:0)+carry;
-           if(sum<10)
-           {
-               if(newNode==NULL)
-               {
-                   newNode=new ListNode(sum);
-                   head=newNode;
-               }
-               else
-               {
-                   newNode->next=new ListNode(sum);
-                   newNode=newNode->next;
-               }
-               carry=0;
-           }
-           else
-           {
-               int remainder=sum%10;
-               carry=sum/10;
-               if(newNode==NULL)
-               {
-                   newNode=new ListNode(remainder);
-                   head=newNode;
-               }
-               else
-               {
-                   newNode->next=new ListNode(remainder);
-                   newNode=newNode->next;
-               }
-           }
-           if(l1)
-           l1=l1->next;
-           if(l2)
-           l2=l2->next;
-        }
-        return head;
-    }
-};
-
-
-2.Add Two Number II  :
-You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
-You may assume the two numbers do not contain any leading zero, except the number 0 itself.
  
-Example 1:
  
-Input: l1 = [7,2,4,3], l2 = [5,6,4]
-Output: [7,8,0,7]
-Example 2:
-Input: l1 = [2,4,3], l2 = [5,6,4]
-Output: [8,0,7]
-Example 3:
-Input: l1 = [0], l2 = [0]
-Output: [0]
-class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-       l1=reverse(l1);
-       l2=reverse(l2);
-        int carry=0;
-        ListNode*newNode=NULL;
-        ListNode*head=NULL;
-        while(l1!=NULL || l2!=NULL || carry!=0)
-        {
-            int sum=(l1?l1->val:0)+(l2?l2->val:0)+carry;
-            if(sum<10)
-            {
-                if(newNode==NULL)
-                {
-                    newNode=new ListNode(sum);
-                    head=newNode;
-                }
-                else
-                {
-                    newNode->next=new ListNode(sum);
-                    newNode=newNode->next;
-                }
-                carry=0;
-            }
-            else
-            {
-                int remainder=sum%10;
-                carry=sum/10;
-                if(newNode==NULL)
-                {
-                    newNode=new ListNode(remainder);
-                    head=newNode;
-                }
-                else
-                {
-                    newNode->next=new ListNode(remainder);
-                    newNode=newNode->next;
-                }
-            }
-            if(l1)
-            l1=l1->next;
-            if(l2)
-            l2=l2->next;
-        }
-        head=reverse(head);
-        return head;
-    }
-    ListNode*reverse(ListNode*head)
-    {
-        ListNode*prev=NULL;
-        while(head!=NULL)
-        {
-            ListNode*nextNode=head->next;
-            head->next=prev;
-            prev=head;
-            head=nextNode;
-        }
-        return prev;
-    }
-};
-3.Copy List With Random Pointer :
-Example 1:
  
-Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
-Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
-Example 2:
  
-Input: head = [[1,1],[2,1]]
-Output: [[1,1],[2,1]]
-Example 3:
  
-Input: head = [[3,null],[3,0],[3,null]]
-Output: [[3,null],[3,0],[3,null]]
-
-/*
-// Definition for a Node.
-class Node {
-public:
-    int val;
-    Node* next;
-    Node* random;
-    
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-        random = NULL;
-    }
-};
-*/
-class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        if(head==NULL)
-        return head;
-        Node*curr=head;
-        while(curr!=NULL)
-        {
-            Node*temp=new Node(curr->val);
-            temp->next=curr->next;
-            curr->next=temp;
-            curr=temp->next;
-        }
-        curr=head;
-        while(curr!=NULL)
-        {
-            if(curr->random!=NULL)
-            {
-                curr->next->random=curr->random->next;
-            }
-            curr=curr->next->next;
-        }
-        Node*copyHead=head->next;
-        curr=head;
-        while(curr!=NULL)
-        {
-            Node*temp=curr->next;
-            curr->next=curr->next->next;
-            if(temp->next!=NULL)
-            {
-                temp->next=temp->next->next;
-            }
-            curr=curr->next;
-        }
-        return copyHead;
-    }
-};
-
-4.Reverse Linked List II : 
-Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
  
-Example 1:
  
-Input: head = [1,2,3,4,5], left = 2, right = 4
-Output: [1,4,3,2,5]
-Example 2:
-Input: head = [5], left = 1, right = 1
-Output: [5]
-class Solution {
-public:
-    ListNode* reverseBetween(ListNode* head, int left, int right) {
-        if(head==NULL || head->next==NULL)
-        {
-            return head;
-        }
-        ListNode*dummy=new ListNode(0);
-          dummy->next=head;
-          ListNode*curr=head;
-          ListNode*prev=dummy;
-          for(int i=1;i<left;i++)
-          {
-             prev=curr;
-             curr=curr->next;
-          }
-          ListNode*point=curr;
-          ListNode*reverse=NULL;
-          for(int i=left;i<=right;i++)
-          {
-             ListNode*nextNode=curr->next;
-             curr->next=reverse;
-             reverse=curr;
-             curr=nextNode;
-          }
-          point->next=curr;
-          prev->next=reverse;
-          return dummy->next;
-    }
-};
-•	DAY 33 : LIST
-1.Swap Nodes in Pairs : 
-Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
- 
-Example 1:
- 
-Input: head = [1,2,3,4]
-Output: [2,1,4,3]
-Example 2:
-Input: head = []
-Output: []
-Example 3:
-Input: head = [1]
-Output: [1]
-class Solution {
-public:
-    ListNode* swapPairs(ListNode* head) {
-        if(head==NULL || head->next==NULL)
-        {
-            return head;
-        }
-        ListNode*curr=head;
-        ListNode*prev=NULL;
-        ListNode*newHead=curr->next;
-        while(curr!=NULL && curr->next!=nullptr)
-        {
-            ListNode*temp1=curr->next;
-            curr->next=temp1->next;
-            temp1->next=curr;
-
-            if(prev!=NULL)
-            {
-                prev->next=temp1;
-            }
-            prev=curr;
-            curr=curr->next;
-        }
-        return newHead;
-    }
-};
-
-
-
-
-2.Odd Even Linked List :
-Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
-The first node is considered odd, and the second node is even, and so on.
-Note that the relative order inside both the even and odd groups should remain as it was in the input.
-You must solve the problem in O(1) extra space complexity and O(n) time complexity.
- 
-Example 1:
- 
-Input: head = [1,2,3,4,5]
-Output: [1,3,5,2,4]
-Example 2:
- 
-Input: head = [2,1,3,5,6,4,7]
-Output: [2,3,6,7,1,5,4]
-class Solution {
-public:
-    ListNode* oddEvenList(ListNode* head) {
-        if(head==NULL || head->next==NULL)
-        {
-            return head;
-        }
-        ListNode*odd=head;
-        ListNode*even=head->next;
-        ListNode*evenHead=even;
-        while(even!=NULL && even->next!=NULL)
-        {
-            odd->next=even->next;
-            odd=odd->next;
-            even->next=odd->next;
-            even=even->next;
-        }
-        odd->next=evenHead;
-        return head;
-    }
-};
-
-3.Partition List : 
-Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
-You should preserve the original relative order of the nodes in each of the two partitions.
- 
-Example 1:
- 
-Input: head = [1,4,3,2,5,2], x = 3
-Output: [1,2,2,4,3,5]
-Example 2:
-Input: head = [2,1], x = 2
-Output: [1,2]
-class Solution {
-public:
-    ListNode* partition(ListNode* head, int x) {
-        ListNode*minhead=NULL,*mintail=NULL;
-        ListNode*maxhead=NULL,*maxtail=NULL;
-        while(head!=NULL)
-        {
-            if(head->val<x)
-            {
-                if(minhead==NULL)
-                {
-                    minhead=mintail=head;
-                }
-                else
-                {
-                    mintail->next=head;
-                    mintail=mintail->next;
-                }
-            }
-            else
-            {
-                if(maxhead==NULL)
-                {
-                    maxhead=maxtail=head;
-                }
-                else
-                {
-                    maxtail->next=head;
-                    maxtail=maxtail->next;
-                }
-            }
-            head=head->next;
-        }
-        if(minhead==NULL)
-        {
-            return maxhead;
-        }
-        if(maxhead==NULL)
-        {
-            return minhead;
-        }
-        mintail->next=maxhead;
-        maxtail->next=NULL;
-        return minhead;
-    }
-};
-
-
-
-
-
-
-
-
-
-
 •	DAY 35 : Stack 
  1.Reverse polish Notation :
  
@@ -1934,206 +1477,162 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-•	DAY 38 : Stack 
-1.Asteroids Collision :
-We are given an array asteroids of integers representing asteroids in a row.
-For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.
-Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.
+•	DAY 46:B_Tree
+1.Binary Tree Level Order Traversal :
+Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
  
 Example 1:
-Input: asteroids = [5,10,-5]
-Output: [5,10]
-Explanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.
+ 
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[9,20],[15,7]]
 Example 2:
-Input: asteroids = [8,-8]
+Input: root = [1]
+Output: [[1]]
+Example 3:
+Input: root = []
 Output: []
-Explanation: The 8 and -8 collide exploding each other.
-Example 3:
-Input: asteroids = [10,2,-5]
-Output: [10]
-Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.
 class Solution {
 public:
-    vector<int> asteroidCollision(vector<int>& asteroids){
-        vector<int>result;
-        for(int i=0;i<asteroids.size();i++)
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>>v;
+        if(root==NULL)
         {
-            if(!result.empty() && (result.back()>0 && asteroids[i]<0))
+            return v;
+        }
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty())
+        {
+            vector<int>v1;
+            int count=q.size();
+            while(count>0)
             {
-                int sum;
-                while(!result.empty() && (result.back()>0 && asteroids[i]<0))
+                root=q.front();
+                v1.push_back(root->val);
+                q.pop();
+                if(root->left)
                 {
-                    sum=result.back()+asteroids[i];
-                    if(sum==0)
-                    {
-                        result.pop_back();
-                        break;
-                    }
-                    else if(sum<0)
-                    {
-                        result.pop_back();
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    q.push(root->left);
                 }
-                if(sum<0)
+                if(root->right)
                 {
-                    result.push_back(asteroids[i]);
+                    q.push(root->right);
                 }
+                count--;
             }
-            else
+            if(!v1.empty())
             {
-                result.push_back(asteroids[i]);
+                v.push_back(v1);
+                v1.clear();
             }
         }
-        return result;
-    } 
-};
-2.Basic Calculator :
-
-
-
-
-
-
-
-
-
-
-
-
-
-3.Remove K digits :
-Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after removing k digits from num.
- 
-Example 1:
-Input: num = "1432219", k = 3
-Output: "1219"
-Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
-Example 2:
-Input: num = "10200", k = 1
-Output: "200"
-Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
-Example 3:
-Input: num = "10", k = 2
-Output: "0"
-Explanation: Remove all the digits from the number and it is left with nothing which is 0.
-class Solution {
-public:
-    string removeKdigits(string num, int k) {
-        if(num.size()==k)
-        {
-            return "0";
-        }
-        string s="";
-        int i=0;
-        while(i<num.size())
-        {
-            if(!s.empty() && k>0)
-            {
-                s.push_back(num[i]);
-                while(!s.empty() && s.size()>=2 && k>0 && (s[s.size()-2]-'0' > s[s.size()-1]-'0'))
-                {
-                    char ch=s[s.size()-1];
-                    s.pop_back();
-                    s.pop_back();
-                    s.push_back(ch);
-                    k--;
-                }
-            }
-            else
-            {
-                s.push_back(num[i]);
-            }
-            i++;
-        }
-        while(k!=0)
-        {
-            s.pop_back();
-            k--;
-        }
-        if(s[0]-'0'==0)
-        {
-            int i=0;
-            string s1="";
-            while(s[i]-'0'==0)
-            {
-                i++;
-            }
-            s1=s.substr(i);
-            return !s1.empty()?s1:"0";
-        }
-        else
-        {
-            return s;
-        }
+        return v;
     }
 };
 
-
-•	DAY 39: Stack 
-1.Remove All Adjacent Duplicate in String II:
-You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
-We repeatedly make k duplicate removals on s until we no longer can.
-Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.
+2.Binary Tree ZigZag Level Order Traversal :
+Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
  
 Example 1:
-Input: s = "abcd", k = 2
-Output: "abcd"
-Explanation: There's nothing to delete.
+ 
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[20,9],[15,7]]
 Example 2:
-Input: s = "deeedbbcccbdaa", k = 3
-Output: "aa"
-Explanation: 
-First delete "eee" and "ccc", get "ddbbbdaa"
-Then delete "bbb", get "dddaa"
-Finally delete "ddd", get "aa"
+Input: root = [1]
+Output: [[1]]
 Example 3:
-Input: s = "pbbcggttciiippooaais", k = 2
-Output: "ps"
+Input: root = []
+Output: []
 class Solution {
 public:
-    string removeDuplicates(string s, int k) {
-        string s1;
-        stack<int>st;
-        for(auto ch:s)
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        if(root==NULL)
         {
-            if(!st.empty() && s1.back()==ch)
-            {
-                if(st.top()==k-1)
-                {
-                    int count=st.top();
-                    while(count>0)
-                    {
-                        s1.pop_back();
-                        count--;
-                    }
-                    st.pop();
-                }
-                else
-                {
-                    st.top()++;
-                    s1.push_back(ch);
-                }
-            }
-            else
-            {
-                st.push(1);
-                s1.push_back(ch);
-            }
+            return {};
         }
-        return s1;
+        vector<vector<int>>v;
+        queue<TreeNode*>q;
+        int ZigZag=1;
+        q.push(root);
+        while(!q.empty())
+        {
+            int size=q.size();
+            vector<int>v1;
+            for(int i=0;i<size;i++)
+            {
+                root=q.front();
+                v1.push_back(root->val);
+                q.pop();
+                if(root->left)
+                {
+                    q.push(root->left);
+                }
+                if(root->right)
+                {
+                    q.push(root->right);
+                }
+            }
+            if(ZigZag%2==0)
+            {
+                reverse(v1.begin(),v1.end());
+            }
+            v.push_back(v1);
+            v1={};
+            ZigZag++;
+        }
+        return v;
     }
 };
+3.Lowest Common Ancestor of a Binary Tree :
+Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+ 
+Example 1:
+ 
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of nodes 5 and 1 is 3.
+Example 2:
+ 
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+Example 3:
+Input: root = [1,2], p = 1, q = 2
+Output: 1
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root==NULL)
+        {
+            return NULL;
+        }
+        if(root==p || root==q)
+        {
+            return root;
+        }
+        TreeNode* leftN=lowestCommonAncestor(root->left,p,q);
+        TreeNode* rightN=lowestCommonAncestor(root->right,p,q);
+        if(leftN!=NULL && rightN!=NULL)
+        {
+            return root;
+        }
+        if(leftN!=NULL)
+        {
+            return leftN;
+        }
+        return rightN;
+    }
+};
+4.Construct Binary Tree from Inorder & Preorder Travesal :
+Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+ 
+Example 1:
+ 
+Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+Output: [3,9,20,null,null,15,7]
+Example 2:
+Input: preorder = [-1], inorder = [-1]
+Output: [-1]
 
 
